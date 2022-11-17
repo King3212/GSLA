@@ -83,10 +83,67 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="GSLA-summary"><a href="#GSLA-summary" class="headerlink" title="GSLA summary"></a>GSLA summary</h1><h2 id="Chapter1"><a href="#Chapter1" class="headerlink" title="Chapter1"></a>Chapter1</h2><p>这章主要讲了消元和矩阵乘法<br>矩阵是结合的，也是分离的</p>
-<h2 id="Chapter2"><a href="#Chapter2" class="headerlink" title="Chapter2"></a>Chapter2</h2><p>这章继续消元的话题，引入了矩阵的逆、转置<br>重点在于用 高斯-若而当思想 进行消元求逆。</p>
-<h2 id="Chapter3"><a href="#Chapter3" class="headerlink" title="Chapter3"></a>Chapter3</h2><p>这章开始进入向量空间、子空间<br>向量空间的概念：<br>一切满足一系列规则的向量的集合<br>子空间的概念：<br>上述集合中同样满足规则的向量构成的集合，且该集合是上一集合的子集。</p>
-<p>null space (N)、culumn space (C)、row space(R)</p>
+        <h1 id="GSLA-summary"><a href="#GSLA-summary" class="headerlink" title="GSLA summary"></a>GSLA summary</h1><p>注：为表述方便，用*表示逆，用&#39;表示转置  </p>
+<h2 id="Chapter1"><a href="#Chapter1" class="headerlink" title="Chapter1"></a>Chapter1</h2><p>这章主要讲了消元和矩阵乘法<br>高斯-若尔当 消元是一种极好的算法<br>在求解Ax &#x3D; b的过程中，完全是线性的，完全符合计算机的操作特点<br>在讲解过程中，列作为向量引入，完全契合了高中生对空间的理解  </p>
+<h2 id="Chapter2"><a href="#Chapter2" class="headerlink" title="Chapter2"></a>Chapter2</h2><p>这章继续消元的话题，引入了矩阵的逆、转置<br>重点在于用 高斯-若而当思想 进行消元求逆。<br>延续消元法，进行LU分解：<br><code>A = LU(或A = LDU)</code><br>这样，有：<code>A = LUx = b  --&gt; Ux = L*b --&gt; Ux = c</code><br>方程Ax &#x3D; b就化为三个过程：  </p>
+<ol>
+<li><code>A--&gt;U</code> (消元：A左乘L*; 同时记录下L*)  </li>
+<li>解方程：<code>Lc = b</code>（relationship betweenL and L* is wonderful）  </li>
+<li>解方程：<code>Ux = c</code></li>
+</ol>
+<h2 id="Chapter3"><a href="#Chapter3" class="headerlink" title="Chapter3"></a>Chapter3</h2><p>这章开始进入向量空间、子空间<br>向量空间的概念：<br>一切满足一系列规则的向量的集合<br>子空间的概念：<br>这里采用集合来描述：<br>上述集合中同样满足规则的向量构成的集合，且该集合是上一集合的子集。<br>四大基本子空间：<br>null space (N), culumn space (C), row space(R), left null space(N’)<br>容易证明：<code>C(A)⊥N(A&#39;)</code> ; <code>R(A)⊥N(A)</code></p>
+<h2 id="Chapter4"><a href="#Chapter4" class="headerlink" title="Chapter4"></a>Chapter4</h2><p><em>正交</em><br>（这章是对高中垂直思想的深入，其实不怎么对哈哈哈<br>1）若两个向量点积为零，则这两个向量正交；<br>2）若某一向量与某向量空间内的任意向量点积为零，则该向量与该向量空间正交；<br>3）若某一向量空间内的任意向量与另一向量空间内的点积为零，则这两个向量空间正交；  </p>
+<p><em>与高中垂直不同的一点是，在n维度的空间里，当a+b&lt;n时：不存在 a维空间A 与 b维空间B 正交；换句人话说：三维空间里存在两个二维平面垂直，不存在两个二维平面正交，因为2+2 &gt; 3。</em></p>
+<p><em>投影矩阵公式</em><br>先推导2维的情况，再扩展到n维（即2维的情况重复n-1次<br>结合线性组合的思想，最后得到公式：<br>举例：向量b要投影到A的列空间：<br>投影矩阵为：<code>A(A&#39;A)*A&#39;（2D_version: aa&#39;/a&#39;a）</code>  </p>
+<p>投影矩阵的应用？那必然是<strong>最小二乘法</strong>（最优解问题<br><em>高中的最小二乘法是直线形式</em>   </p>
+<p><em><strong>举个例子: 	下表是2维平面内的一些点，要拟合最优直线</strong></em> </p>
+<table>
+<thead>
+<tr>
+<th>x</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>y</strong></td>
+<td><strong>1</strong></td>
+<td><strong>2</strong></td>
+<td><strong>2</strong></td>
+</tr>
+</tbody></table>
+<p>即方程组：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">c + d = 1  </span><br><span class="line">2c + d = 2  </span><br><span class="line">3c + d = 2</span><br></pre></td></tr></table></figure>
+
+<p>即矩阵方程:    </p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>1</strong></th>
+<th align="center"><strong>1</strong></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"><strong>1</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>2</strong></td>
+<td align="center"><strong>1</strong></td>
+<td align="center"><strong>(c,d)</strong></td>
+<td align="center"><strong>&#x3D;</strong></td>
+<td align="center"><strong>2</strong></td>
+</tr>
+<tr>
+<td align="center"><strong>3</strong></td>
+<td align="center"><strong>1</strong></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><strong>2</strong></td>
+</tr>
+</tbody></table>
+<p>即 <code>Ax = b</code></p>
+<p>但显然：b !∈ C ( A )<br>这时候，从空间上来看，就是找向量(1,2,3)和(1,1,1)的一个线性组合<strong>Ax</strong>  使得误差向量e( e &#x3D; Ax - b )的长度最小<br>从空间上看，此时自然是当Ax与b在C(A)的投影重合时<br>此时使用投影矩阵有：<code>Ax = A(A&#39;A)A\*b --&gt;  x = (A&#39;A)*b</code><br>此时的x就是x的最优解    </p>
 
       
     </div>
