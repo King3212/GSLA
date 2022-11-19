@@ -83,7 +83,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="GSLA-summary"><a href="#GSLA-summary" class="headerlink" title="GSLA summary"></a>GSLA summary</h1><p>注：为表述方便，用*表示逆，用&#39;表示转置  </p>
+        <h1 id="GSLA-summary"><a href="#GSLA-summary" class="headerlink" title="GSLA summary"></a>GSLA summary</h1><p>注：为表述方便，用<code>*</code>表示逆，用&#39;表示转置  </p>
 <h2 id="Chapter1"><a href="#Chapter1" class="headerlink" title="Chapter1"></a>Chapter1</h2><p>这章主要讲了消元和矩阵乘法<br>高斯-若尔当 消元是一种极好的算法<br>在求解Ax &#x3D; b的过程中，完全是线性的，完全符合计算机的操作特点<br>在讲解过程中，列作为向量引入，完全契合了高中生对空间的理解  </p>
 <h2 id="Chapter2"><a href="#Chapter2" class="headerlink" title="Chapter2"></a>Chapter2</h2><p>这章继续消元的话题，引入了矩阵的逆、转置<br>重点在于用 高斯-若而当思想 进行消元求逆。<br>延续消元法，进行LU分解：<br><code>A = LU(或A = LDU)</code><br>这样，有：<code>A = LUx = b  --&gt; Ux = L*b --&gt; Ux = c</code><br>方程Ax &#x3D; b就化为三个过程：  </p>
 <ol>
@@ -92,9 +92,9 @@
 <li>解方程：<code>Ux = c</code></li>
 </ol>
 <h2 id="Chapter3"><a href="#Chapter3" class="headerlink" title="Chapter3"></a>Chapter3</h2><p>这章开始进入向量空间、子空间<br>向量空间的概念：<br>一切满足一系列规则的向量的集合<br>子空间的概念：<br>这里采用集合来描述：<br>上述集合中同样满足规则的向量构成的集合，且该集合是上一集合的子集。<br>四大基本子空间：<br>null space (N), culumn space (C), row space(R), left null space(N’)<br>容易证明：<code>C(A)⊥N(A&#39;)</code> ; <code>R(A)⊥N(A)</code></p>
-<h2 id="Chapter4"><a href="#Chapter4" class="headerlink" title="Chapter4"></a>Chapter4</h2><p><em>正交</em><br>（这章是对高中垂直思想的深入，其实不怎么对哈哈哈<br>1）若两个向量点积为零，则这两个向量正交；<br>2）若某一向量与某向量空间内的任意向量点积为零，则该向量与该向量空间正交；<br>3）若某一向量空间内的任意向量与另一向量空间内的点积为零，则这两个向量空间正交；  </p>
+<h2 id="Chapter4"><a href="#Chapter4" class="headerlink" title="Chapter4"></a>Chapter4</h2><h3 id="正交"><a href="#正交" class="headerlink" title="正交"></a>正交</h3><p>（这章是对高中垂直思想的深入，其实不怎么对哈哈哈<br>1）若两个向量点积为零，则这两个向量正交；<br>2）若某一向量与某向量空间内的任意向量点积为零，则该向量与该向量空间正交；<br>3）若某一向量空间内的任意向量与另一向量空间内的点积为零，则这两个向量空间正交；  </p>
 <p><em>与高中垂直不同的一点是，在n维度的空间里，当a+b&lt;n时：不存在 a维空间A 与 b维空间B 正交；换句人话说：三维空间里存在两个二维平面垂直，不存在两个二维平面正交，因为2+2 &gt; 3。</em></p>
-<p><em>投影矩阵公式</em><br>先推导2维的情况，再扩展到n维（即2维的情况重复n-1次<br>结合线性组合的思想，最后得到公式：<br>举例：向量b要投影到A的列空间：<br>投影矩阵为：<code>A(A&#39;A)*A&#39;（2D_version: aa&#39;/a&#39;a）</code>  </p>
+<h3 id="投影矩阵公式"><a href="#投影矩阵公式" class="headerlink" title="投影矩阵公式"></a>投影矩阵公式</h3><p>先推导2维的情况，再扩展到n维（即2维的情况重复n-1次<br>结合线性组合的思想，最后得到公式：<br>举例：向量b要投影到A的列空间：<br>投影矩阵为：<code>A(A&#39;A)*A&#39;（2D_version: aa&#39;/a&#39;a）</code>  </p>
 <p>投影矩阵的应用？那必然是<strong>最小二乘法</strong>（最优解问题<br><em>高中的最小二乘法是直线形式</em>   </p>
 <p><em><strong>举个例子: 	下表是2维平面内的一些点，要拟合最优直线</strong></em> </p>
 <table>
@@ -143,7 +143,68 @@
 </tr>
 </tbody></table>
 <p>即 <code>Ax = b</code></p>
-<p>但显然：b !∈ C ( A )<br>这时候，从空间上来看，就是找向量(1,2,3)和(1,1,1)的一个线性组合<strong>Ax</strong>  使得误差向量e( e &#x3D; Ax - b )的长度最小<br>从空间上看，此时自然是当Ax与b在C(A)的投影重合时<br>此时使用投影矩阵有：<code>Ax = A(A&#39;A)A\*b --&gt;  x = (A&#39;A)*b</code><br>此时的x就是x的最优解    </p>
+<p>但显然：b !∈ C ( A )<br>这时候，从空间上来看，就是找向量(1,2,3)和(1,1,1)的一个线性组合<strong>Ax</strong>  使得误差向量e( e &#x3D; Ax - b )的长度最小<br>从空间上看，此时自然是当Ax与b在C(A)的投影重合时<br>此时使用投影矩阵有：<code>Ax = A(A&#39;A)*A&#39;b --&gt;  x = (A&#39;A)*A&#39;b</code><br>此时的x就是x的最优解    </p>
+<h3 id="A-x3D-QR"><a href="#A-x3D-QR" class="headerlink" title="A &#x3D; QR"></a>A &#x3D; QR</h3><p>Q是标准正交矩阵（每个元素都是单位长度，任意两个元素都互相正交）<br>Q有很好的性质，比如：<code>QQ&#39; = I</code><br>（相当于建直角坐标系，谁会不喜欢正交且单位的一组基呢？  </p>
+<p>求Q的方式其实很简单：<br>前面学了投影矩阵，学了误差e<br>这里其实就是合理利用误差e（求的就是个e  </p>
+<p>假设我们的A里边有列a、列b和列c<br>选取向量<code>a/(a&#39;a)</code>为第一个base<br>第二个base是：<code>x = b - [(aa&#39;)/(a&#39;a)],x/(x&#39;x)</code><br>第三个base是：<code>x = c - [(aa&#39;)/(a&#39;a)] - [(bb&#39;)/(b&#39;b)],x/(x&#39;x)</code><br>就是减去分量再除以模长嘛……  </p>
+<p>那R呢？R是个upper triangle matrix（上三角矩阵U）<br>从<code>QQ&#39; = I</code>可以知道（具体证明略  </p>
+<h2 id="Chapter5"><a href="#Chapter5" class="headerlink" title="Chapter5"></a>Chapter5</h2><h3 id="行列式"><a href="#行列式" class="headerlink" title="行列式"></a>行列式</h3><p><strong>特性：</strong>  </p>
+<ol>
+<li>I的行列式为1  </li>
+<li>row change 会变号  —&gt;  1）2） 可推任意置换矩阵的行列式  </li>
+<li>每一行都有线性性(加法和数乘，可用box来解释)  </li>
+<li>如果两列相同，则行列式为0（交换相同的两行可证  </li>
+<li>消元不会对行列式造成影响（换行另说）  </li>
+<li>有零行的方阵行列式为零（数乘可证, 亦可由4)得到 )  </li>
+<li>U or L 方阵的行列式都是对角线元素的乘积  &lt;—  消元可得<br><em>（这里如果A分解成LDU，那直接就是D的行列式）</em>  </li>
+<li>行列式为零，方阵奇异  </li>
+<li><code>det(BC) = det(B)det(C)</code><br>可推：<code>det(I) = det(A*)det(A)</code>  —&gt;  <code>det(A\*) = 1/det(A)</code><br><em>显然，如果A不可逆（det(A) &#x3D; 0），则 det(A*) 无意义</em>  </li>
+<li>det(A’) &#x3D; det(A)  （用 7) 易证）</li>
+</ol>
+<p><strong>计算方法：</strong>  </p>
+<ol>
+<li>行列式 or 代数余子式  </li>
+<li>消元后求</li>
+</ol>
+<p><strong>应用</strong>  </p>
+<ol>
+<li><p>求逆矩阵的公式：<code>A* = (1/det(A))C&#39; </code><br> <em>其中C是a的伴随矩阵，C每个位置的元素都是A中对应位置的代数子余式</em>  </p>
+</li>
+<li><p>克拉默法则：<code>Ax = b</code>  —&gt;  <code>x1 = det(B1)/det(A)</code><br> 其中：<code>A=[a1 a2 ... an]``Bk = [a1...ak-1 b ak+1 ... an]</code><br> 推导的关键：xk &#x3D; <strong>[detA1k  detA2k  … detAnk]b</strong>&#x2F;det(A)<br> 加粗部分就是Bk的代数余子式</p>
+</li>
+<li><p>det(A) 可以看作A的各行向量为边围成的box体积（row为边）<br><strong>用这个可以解释前面行列式的特性</strong><br><em>我个人是非常喜欢代数几何化的，可能和自己空间想象能力比较强有关</em></p>
+</li>
+</ol>
+<h2 id="Chapter6"><a href="#Chapter6" class="headerlink" title="Chapter6"></a>Chapter6</h2><h3 id="特征量和特征向量"><a href="#特征量和特征向量" class="headerlink" title="特征量和特征向量"></a>特征量和特征向量</h3><p>Ax可以看作A对x做的一种变换<br>那么可能存在这么一些x使得Ax &#x3D; λx<br><em>举个栗子：  若P是个投影到A的矩阵<br>若x在A的列空间里，Px &#x3D; x，λ &#x3D; 1<br>若x正交于A的列空间，有Px &#x3D; 0，λ &#x3D; 0（此为平凡解，一般不考虑 :-) )</em><br>既然不考虑平凡解，那也就是说，讨论的A是奇异的</p>
+<p>这里的λ就是特征量，符合这样条件的x就是特征向量<br>会发现：λ 是描述的是变换的程度  </p>
+<p><strong>特征量和特征向量的求法</strong><br>从已知的方程开始：<code>Ax = λx   (1)</code><br>移项：<code>Ax - λIx = 0        (2)</code><br>合并：<code>(A-λx)x = 0         (3)</code><br>为了解出非平凡解，就要求<code>det(A-λx)=0</code>,这里可以解出n个λ<br>再将λ代入方程(3)即可解出x<br><em>这里有几个点需要注意 :</em>  </p>
+<ol>
+<li><em>λ可能出现重解，重解会导致缺base</em>  </li>
+<li><em>代入一个λ，原则上只需解出一个x(作为base)</em></li>
+<li><em>λ可以是复数</em></li>
+<li><em>会发现：x的线性组合就是(A-λx)的零空间</em></li>
+</ol>
+<p>既然有了空间的base（x），把这些base凑一块，就能得到一个方阵X<br>有：<code>X*AX = Λ``A = XΛX*</code><br>推导：先算AX，再把⋀提出来，再左乘X*即可<br>特性：(A^k)x &#x3D; X(Λ^k)X*x  <em>显然Λ这里表示的是变换程度</em></p>
+<p><strong>应用</strong><br>来求个斐波那契数列通项吧<br>递推：<code>Lk+2 = Lk+1 + Lk</code><br>补上：<code>Lk+1 = Lk+1</code><br>构造：<strong>uk</strong> &#x3D; （Lk+1,Lk)<br>矩阵方程：  </p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>1</strong></th>
+<th align="center"><strong>1</strong></th>
+<th align="center"><strong>ak+1</strong></th>
+<th align="center"><strong>ak+2</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>1</strong></td>
+<td align="center"><strong>0</strong></td>
+<td align="center"><strong>ak</strong></td>
+<td align="center"><strong>ak+1</strong></td>
+</tr>
+</tbody></table>
+<p>有：Ax &#x3D; λx<br>可解得：<br>λ1 &#x3D; (1-√5)&#x2F;2	，<strong>x1</strong> &#x3D; （λ1, 1)<br>λ2 &#x3D; (1+√5)&#x2F;2	，<strong>x2</strong> &#x3D; （λ2, 1)  </p>
+<p><strong>u1</strong> &#x3D; ( 1 , 0 ) &#x3D; x1&#x2F;√5 + x2&#x2F;√5<br><strong>un</strong> &#x3D; A^(n-1)<strong>u1</strong> &#x3D; A^(n-1) (<strong>x1</strong>&#x2F;√5 + <strong>x2</strong>&#x2F;√5)<br>      &#x3D; A^(n-1)(<strong>x1</strong>&#x2F;√5) + A^(n-1)( <strong>x2</strong> &#x2F;√5)<br>      &#x3D; λ1^(n-1)<strong>x1</strong>&#x2F;√5 + λ2^(n-1)<strong>x2</strong>&#x2F;√5<br>      &#x3D; ( λ1^n &#x2F; √5 + λ2^n &#x2F; √5，λ1^(n-1) &#x2F; √5 + λ2^(n-1) &#x2F; √5)  </p>
+<p>∴ Ln &#x3D; λ1^n &#x2F; √5 + λ2^n &#x2F; √5；λ1 &#x3D; (1-√5)&#x2F;2，λ2 &#x3D; (1+√5)&#x2F;2<br>当n很大时，可知近似值为λ2^n &#x2F; √5，λ2 &#x3D; (1+√5)&#x2F;2  </p>
 
       
     </div>
