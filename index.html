@@ -85,7 +85,7 @@
       
         <h1 id="GSLA-summary"><a href="#GSLA-summary" class="headerlink" title="GSLA summary"></a>GSLA summary</h1><p>注：为表述方便，用<code>*</code>表示逆，用&#39;表示转置  </p>
 <h2 id="Chapter1"><a href="#Chapter1" class="headerlink" title="Chapter1"></a>Chapter1</h2><p>这章主要讲了消元和矩阵乘法<br>高斯-若尔当 消元是一种极好的算法<br>在求解Ax &#x3D; b的过程中，完全是线性的，完全符合计算机的操作特点<br>在讲解过程中，列作为向量引入，完全契合了高中生对空间的理解  </p>
-<h2 id="Chapter2"><a href="#Chapter2" class="headerlink" title="Chapter2"></a>Chapter2</h2><p>这章继续消元的话题，引入了矩阵的逆、转置<br>重点在于用 高斯-若而当思想 进行消元求逆。<br>延续消元法，进行LU分解：<br><code>A = LU(或A = LDU)</code><br>这样，有：<code>A = LUx = b  --&gt; Ux = L*b --&gt; Ux = c</code><br>方程Ax &#x3D; b就化为三个过程：  </p>
+<h2 id="Chapter2"><a href="#Chapter2" class="headerlink" title="Chapter2"></a>Chapter2</h2><p>这章继续消元的话题，引入了矩阵的逆、转置<br>重点在于用 高斯-若而当思想 进行消元求逆。<br>延续消元法，进行LU分解：<br><code>A = LU(或A = LDU)</code><br>这样，有：<code>Ax = LUx = b  --&gt; Ux = L*b --&gt; Ux = c</code><br>方程Ax &#x3D; b就化为三个过程：  </p>
 <ol>
 <li><code>A--&gt;U</code> (消元：A左乘L*; 同时记录下L*)  </li>
 <li>解方程：<code>Lc = b</code>（relationship betweenL and L* is wonderful）  </li>
